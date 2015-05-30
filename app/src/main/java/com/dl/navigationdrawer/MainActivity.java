@@ -27,9 +27,9 @@ public class MainActivity extends ActionBarActivity {
     private TextViewFragment mTextViewFragment;
 
     private static class FragmentTag {
-        public static final String TAG_DRAWER_MENU_GRAGMENT = "tag_drawer_menu_fragment";
-        public static final String TAG_BUTTON_GRAGMENT = "tag_button_fragment";
-        public static final String TAG_TEXTVIEW_GRAGMENT = "tag_textview_fragment";
+        public static final String TAG_DRAWER_MENU_FRAGMENT = "tag_drawer_menu_fragment";
+        public static final String TAG_BUTTON_FRAGMENT = "tag_button_fragment";
+        public static final String TAG_TEXTVIEW_FRAGMENT = "tag_textview_fragment";
     }
 
     @Override
@@ -78,19 +78,19 @@ public class MainActivity extends ActionBarActivity {
     private void initFragments() {
         FragmentTransaction fragmentTransaction = mFragmentManager.beginTransaction();
 
-        mDrawerMenuFragment = (DrawerMenuFragment) mFragmentManager.findFragmentByTag(FragmentTag.TAG_DRAWER_MENU_GRAGMENT);
+        mDrawerMenuFragment = (DrawerMenuFragment) mFragmentManager.findFragmentByTag(FragmentTag.TAG_DRAWER_MENU_FRAGMENT);
         if (mDrawerMenuFragment == null) {
             mDrawerMenuFragment = new DrawerMenuFragment();
         }
         fragmentTransaction.add(R.id.drawer_menu_container, mDrawerMenuFragment);
 
-        mButtonFragment = (ButtonFragment) mFragmentManager.findFragmentByTag(FragmentTag.TAG_BUTTON_GRAGMENT);
+        mButtonFragment = (ButtonFragment) mFragmentManager.findFragmentByTag(FragmentTag.TAG_BUTTON_FRAGMENT);
         if (mButtonFragment == null) {
             mButtonFragment = new ButtonFragment();
         }
         fragmentTransaction.add(R.id.content_container, mButtonFragment);
 
-        mTextViewFragment = (TextViewFragment) mFragmentManager.findFragmentByTag(FragmentTag.TAG_TEXTVIEW_GRAGMENT);
+        mTextViewFragment = (TextViewFragment) mFragmentManager.findFragmentByTag(FragmentTag.TAG_TEXTVIEW_FRAGMENT);
         if (mTextViewFragment == null) {
             mTextViewFragment = new TextViewFragment();
         }
