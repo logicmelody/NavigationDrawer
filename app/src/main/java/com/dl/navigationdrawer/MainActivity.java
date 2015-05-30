@@ -1,15 +1,24 @@
 package com.dl.navigationdrawer;
 
-import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 
 
 public class MainActivity extends ActionBarActivity {
+
+    private ActionBar mActionBar;
+    private Toolbar mToolbar;
+    private DrawerLayout mDrawerLayout;
+    private ActionBarDrawerToggle mDrawerToggle;
 
     private FragmentManager mFragmentManager;
 
@@ -32,7 +41,38 @@ public class MainActivity extends ActionBarActivity {
 
     private void initialize() {
         mFragmentManager = getFragmentManager();
+        findViews();
+        initActionbar();
+        initDrawer();
         initFragments();
+    }
+
+    private void initActionbar() {
+        setSupportActionBar(mToolbar);
+        mActionBar = getSupportActionBar();
+        mActionBar.setDisplayHomeAsUpEnabled(true);
+    }
+
+    private void findViews() {
+        mToolbar = (Toolbar) findViewById(R.id.tool_bar);
+        mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
+    }
+
+    private void initDrawer() {
+        mDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout,
+                                                  mToolbar, R.string.drawer_open, R.string.drawer_close) {
+            @Override
+            public void onDrawerClosed(View drawerView) {
+                super.onDrawerClosed(drawerView);
+            }
+
+            @Override
+            public void onDrawerOpened(View drawerView) {
+                super.onDrawerOpened(drawerView);
+            }
+        };
+        mDrawerToggle.syncState();
+        mDrawerLayout.setDrawerListener(mDrawerToggle);
     }
 
     private void initFragments() {
